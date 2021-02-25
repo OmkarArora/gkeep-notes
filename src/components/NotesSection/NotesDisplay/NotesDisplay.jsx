@@ -1,11 +1,15 @@
 import NotesCard from "./NotesCard/NotesCard";
 
-const NotesDisplay = ({notes}) => {
-	return(
-		<div>
-			{notes.map(item => <NotesCard title={item.title} content={item.content}/>)}
-		</div>
-	)
-}
+import "./notesDisplay.css";
+
+const NotesDisplay = ({ notes }) => {
+  return (
+    <div className="container-notes">
+      {notes.map((item) => (
+        <NotesCard key={`Note${item.id}`} title={item.title} content={item.content}/>
+      ))}
+    </div>
+  );
+};
 
 export default NotesDisplay;

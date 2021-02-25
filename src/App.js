@@ -2,7 +2,7 @@ import {NotesSection} from "./components";
 
 const App = () => {
 	return (
-		<div class="App">
+		<div className="App">
 			<NotesSection/>
 		</div>
 	)
