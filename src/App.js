@@ -1,7 +1,9 @@
+import {NotesSection} from "./components";
+
 const App = () => {
 	return (
 		<div class="App">
-			Wassup
+			<NotesSection/>
 		</div>
 	)
 }
