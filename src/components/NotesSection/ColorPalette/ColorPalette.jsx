@@ -11,7 +11,7 @@ const allColors = [
   "--color-yellow",
 ];
 
-const ColorPalette = () => {
+const ColorPalette = ({updateBgColor, activeColor}) => {
   const [hoverColor, setHoverColor] = useState("");
 
   return (
@@ -26,10 +26,11 @@ const ColorPalette = () => {
               className={hoverColor===color?"color active":"color"}
               style={{
                 backgroundColor: `var(${color})`,
-                border: color.includes("brown") && hoverColor!==color ? "1px solid #C8C8C8" : "",
+                border: activeColor===color?"1px solid white": color.includes("brown") && hoverColor!==color ? "1px solid #C8C8C8" : "",
               }}
               onMouseOver={() => setHoverColor(color)}
 			  onMouseLeave={()=>setHoverColor("")}
+			  onClick={()=>updateBgColor(color)}
             ></div>
           );
         })}

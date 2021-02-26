@@ -4,13 +4,22 @@ import ColorPalette from "../ColorPalette/ColorPalette";
 const NotesInput = ({addNewNote}) => {
   const [titleState, setTitle] = useState("");
   const [contentState, setContent] = useState("");
+  const [bgColor, setBgColor] = useState("");
+
   const onClickAdd = () => {
 	  addNewNote({title: titleState, content: contentState});
 	  setTitle("");
 	  setContent("");
   }
+  const updateBgColor = (color) => {
+    setBgColor(color);
+  }
+  
+  console.log(bgColor);
+  
+
   return (
-    <div>
+    <div style={{backgroundColor: bgColor===""?"":`var(${bgColor})`}}>
       <div>
         <input
           placeholder="Title"
@@ -26,7 +35,7 @@ const NotesInput = ({addNewNote}) => {
         ></input>
       </div>
       <div >
-        <ColorPalette/>
+        <ColorPalette updateBgColor={(color)=>updateBgColor(color)} activeColor={bgColor}/>
       <button onClick={onClickAdd}>Add</button>
       </div>
     </div>

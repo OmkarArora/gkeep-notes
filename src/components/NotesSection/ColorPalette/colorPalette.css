@@ -1,21 +1,33 @@
 .container-colorPalette {
   width: 130px;
+  height: max-content;
+  position: relative;
 }
 
 .container-colorPalette .container-colors {
-  display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 5px;
   background-color: var(--color-dark);
   padding: 0.6rem;
   border-radius: 0.5rem;
+
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+  display: none;
 }
+
+.container-colorPalette:hover .container-colors {
+  display: grid;
+}
+
 .container-colorPalette .container-colors .color {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: 1px solid transparent;
 }
 
-.color.active {
+.container-colorPalette .container-colors .color.active {
   border: 1px solid white;
 }
