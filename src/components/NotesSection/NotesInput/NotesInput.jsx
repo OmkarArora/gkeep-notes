@@ -14,9 +14,6 @@ const NotesInput = ({addNewNote}) => {
   const updateBgColor = (color) => {
     setBgColor(color);
   }
-  
-  console.log(bgColor);
-  
 
   return (
     <div style={{backgroundColor: bgColor===""?"":`var(${bgColor})`}}>
