@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ColorPalette from "../ColorPalette/ColorPalette";
 
 const NotesInput = ({addNewNote}) => {
   const [titleState, setTitle] = useState("");
@@ -23,7 +24,10 @@ const NotesInput = ({addNewNote}) => {
           value={contentState}
           onChange={(event) => setContent(event.target.value)}
         ></input>
-        <button onClick={onClickAdd}>Add</button>
+      </div>
+      <div >
+        <ColorPalette/>
+      <button onClick={onClickAdd}>Add</button>
       </div>
     </div>
   );

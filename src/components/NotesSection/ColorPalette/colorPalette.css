@@ -1,0 +1,21 @@
+.container-colorPalette {
+  width: 130px;
+}
+
+.container-colorPalette .container-colors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  background-color: var(--color-dark);
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+}
+.container-colorPalette .container-colors .color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.color.active {
+  border: 1px solid white;
+}
