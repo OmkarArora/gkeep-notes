@@ -2,6 +2,8 @@ import { useState } from "react";
 import NotesMenu from "../NotesMenu/NotesMenu";
 import TagsDisplay from "../TagsDisplay/TagsDisplay";
 
+import "./notesInput.css"
+
 const NotesInput = ({ addNewNote }) => {
   const [titleState, setTitle] = useState("");
   const [contentState, setContent] = useState("");
@@ -13,6 +15,7 @@ const NotesInput = ({ addNewNote }) => {
     setTitle("");
     setContent("");
   };
+
   const updateBgColor = (color) => {
     setBgColor(color);
   };
@@ -24,8 +27,13 @@ const NotesInput = ({ addNewNote }) => {
     if (isPresent === undefined) addTag([...addedTags, newTag]);
   };
 
+  const deleteTag = (tag) => {
+    let updatedTags = addedTags.filter(item => tag.toLowerCase()!==item.toLowerCase())
+    addTag(updatedTags);
+  }
+
   return (
-    <div style={{ backgroundColor: bgColor === "" ? "" : `var(${bgColor})` }}>
+    <div className="container-notesInput" style={{ backgroundColor: bgColor === "" ? "" : `var(${bgColor})` }}>
       <div>
         <input
           placeholder="Title"
@@ -41,7 +49,7 @@ const NotesInput = ({ addNewNote }) => {
         ></textarea>
       </div>
       <div>
-        <TagsDisplay tags={addedTags}         tagsId={"newNote"}/>
+        <TagsDisplay tags={addedTags} tagsId={"newNote"} deleteTag={(tag)=>deleteTag(tag)}/>
       </div>
       <NotesMenu
         updateBgColor={(color) => updateBgColor(color)}
