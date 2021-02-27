@@ -1,0 +1,14 @@
+.container-hashtag {
+  position: relative;
+}
+
+.container-hashtag .container-tagInput {
+  display: none;
+  position: absolute;
+}
+
+.container-hashtag:hover .container-tagInput {
+  display: block;
+  padding: 1rem;
+  background-color: var(--color-dark);
+}

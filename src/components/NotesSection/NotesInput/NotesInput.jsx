@@ -1,22 +1,31 @@
 import { useState } from "react";
-import ColorPalette from "../ColorPalette/ColorPalette";
+import NotesMenu from "../NotesMenu/NotesMenu";
+import TagsDisplay from "../TagsDisplay/TagsDisplay";
 
-const NotesInput = ({addNewNote}) => {
+const NotesInput = ({ addNewNote }) => {
   const [titleState, setTitle] = useState("");
   const [contentState, setContent] = useState("");
   const [bgColor, setBgColor] = useState("");
+  const [addedTags, addTag] = useState([]);
 
   const onClickAdd = () => {
-	  addNewNote({title: titleState, content: contentState});
-	  setTitle("");
-	  setContent("");
-  }
+    addNewNote({ title: titleState, content: contentState });
+    setTitle("");
+    setContent("");
+  };
   const updateBgColor = (color) => {
     setBgColor(color);
-  }
+  };
+
+  const updateTagsList = (newTag) => {
+    let isPresent = addedTags.find(
+      (tag) => tag.toLowerCase() === newTag.toLowerCase()
+    );
+    if (isPresent === undefined) addTag([...addedTags, newTag]);
+  };
 
   return (
-    <div style={{backgroundColor: bgColor===""?"":`var(${bgColor})`}}>
+    <div style={{ backgroundColor: bgColor === "" ? "" : `var(${bgColor})` }}>
       <div>
         <input
           placeholder="Title"
@@ -25,16 +34,21 @@ const NotesInput = ({addNewNote}) => {
         ></input>
       </div>
       <div>
-        <input
+        <textarea
           placeholder="Take a note..."
           value={contentState}
           onChange={(event) => setContent(event.target.value)}
-        ></input>
+        ></textarea>
       </div>
-      <div >
-        <ColorPalette updateBgColor={(color)=>updateBgColor(color)} activeColor={bgColor}/>
+      <div>
+        <TagsDisplay tags={addedTags}         tagsId={"newNote"}/>
+      </div>
+      <NotesMenu
+        updateBgColor={(color) => updateBgColor(color)}
+        activeColor={bgColor}
+        updateTagsList={(tag)=>updateTagsList(tag)}
+      />
       <button onClick={onClickAdd}>Add</button>
-      </div>
     </div>
   );
 };
