@@ -22,6 +22,7 @@
   font-weight: 600;
   font-size: 1.2rem;
   resize: none;
+  flex: 1;
 }
 
 .container-notesInput .input-content {
@@ -32,6 +33,7 @@
 .container-input-topRow {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .container-input-topRow .container-pin {
