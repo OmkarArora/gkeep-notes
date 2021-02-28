@@ -43,11 +43,13 @@ export const NotesSection = () => {
         id: allNotes.length + 1,
         title: newNote.title,
         content: newNote.content,
-        bgColor: "gray",
-        isPinned: false,
+        bgColor: newNote.bgColor,
+        isPinned: newNote.isPinned,
+        tags: newNote.tags
       },
     ]);
   };
+  console.log(allNotes)
   return (
     <div className="section-notes">
       <section className="section-input">

@@ -13,9 +13,14 @@ const NotesInput = ({ addNewNote }) => {
   const [isPinned, setPin] = useState(false);
 
   const onClickAdd = () => {
-    addNewNote({ title: titleState, content: contentState, isPinned: isPinned });
+    addNewNote({ title: titleState, content: contentState, isPinned: isPinned, tags: addedTags, bgColor: bgColor });
+
+    //reset all fields
     setTitle("");
     setContent("");
+    addTag([]);
+    setBgColor("");
+    setPin(false);
   };
 
   const updateBgColor = (color) => {

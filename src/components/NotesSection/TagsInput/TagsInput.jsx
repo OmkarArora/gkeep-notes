@@ -3,13 +3,13 @@ import { FaHashtag } from "react-icons/fa";
 
 import "./tagsInput.css";
 
-const TagsInput = ({updateTagsList}) => {
+const TagsInput = ({ updateTagsList }) => {
   const [tagValue, setTag] = useState("");
 
   const addNewTag = () => {
     updateTagsList(tagValue);
     setTag("");
-  }
+  };
 
   return (
     <div className="container-hashtag">
@@ -19,9 +19,12 @@ const TagsInput = ({updateTagsList}) => {
           className="input-tags"
           value={tagValue}
           onChange={(event) => setTag(event.target.value)}
-          placeholder="enter tag"
+          placeholder="Enter tag"
+          onKeyPress={(event) => {
+            if (event.key === "Enter") addNewTag();
+          }}
         />
-        <button onClick={addNewTag}>Add</button>
+        {/* <button onClick={addNewTag}>Add</button> */}
       </div>
     </div>
   );

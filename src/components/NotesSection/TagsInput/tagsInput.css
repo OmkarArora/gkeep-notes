@@ -1,5 +1,6 @@
 .container-hashtag {
   position: relative;
+  cursor: pointer;
 }
 
 .container-hashtag .container-tagInput {
@@ -8,7 +9,23 @@
 }
 
 .container-hashtag:hover .container-tagInput {
-  display: block;
+  display: flex;
   padding: 1rem;
   background-color: var(--color-dark);
+  border: 1px solid var(--color-placeholder);
+  border-radius: 1rem;
+}
+
+.container-hashtag:hover .container-tagInput .input-tags {
+  background-color: inherit;
+  color: white;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.2rem;
+}
+
+.container-hashtag:hover .container-tagInput button {
+  font-size: 0.8rem;
 }
