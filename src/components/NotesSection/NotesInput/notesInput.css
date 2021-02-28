@@ -38,3 +38,25 @@
   font-size: 1.3rem;
   cursor: pointer;
 }
+
+.container-bottomMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.container-bottomMenu button {
+  cursor: pointer;
+  color: var(--color-placeholder);
+  background: none;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.container-bottomMenu button:hover {
+  color: white;
+}

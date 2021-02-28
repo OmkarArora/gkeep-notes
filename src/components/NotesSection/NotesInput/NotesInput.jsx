@@ -13,7 +13,7 @@ const NotesInput = ({ addNewNote }) => {
   const [isPinned, setPin] = useState(false);
 
   const onClickAdd = () => {
-    addNewNote({ title: titleState, content: contentState });
+    addNewNote({ title: titleState, content: contentState, isPinned: isPinned });
     setTitle("");
     setContent("");
   };
@@ -82,12 +82,15 @@ const NotesInput = ({ addNewNote }) => {
           deleteTag={(tag) => deleteTag(tag)}
         />
       </div>
+      <div className="container-bottomMenu">
       <NotesMenu
         updateBgColor={(color) => updateBgColor(color)}
         activeColor={bgColor}
         updateTagsList={(tag) => updateTagsList(tag)}
       />
       <button onClick={onClickAdd}>Add</button>
+      </div>
+      
     </div>
   );
 };

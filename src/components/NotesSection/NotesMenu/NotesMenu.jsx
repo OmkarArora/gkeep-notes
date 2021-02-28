@@ -1,9 +1,11 @@
 import ColorPalette from "../ColorPalette/ColorPalette";
 import TagsInput from "../TagsInput/TagsInput";
 
+import "./notesMenu.css";
+
 const NotesMenu = ({ updateBgColor, bgColor, updateTagsList, tagsId }) => {
   return (
-    <div>
+    <div className="container-notesMenu">
       <ColorPalette
         updateBgColor={(color) => updateBgColor(color)}
         activeColor={bgColor}
