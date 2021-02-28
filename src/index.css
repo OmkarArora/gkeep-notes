@@ -8,6 +8,7 @@
   --color-gray: #3c3f43;
   --color-yellow: #635d19;
   --color-light-gray: #5f6368;
+  --color-placeholder: #80868b;
 }
 
 body {
@@ -27,4 +28,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--color-placeholder);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--color-placeholder);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--color-placeholder);
 }

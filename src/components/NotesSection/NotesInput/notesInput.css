@@ -1,6 +1,40 @@
 .container-notesInput {
-  width: 50vw;
+  width: 45vw;
   border: 1px solid var(--color-light-gray);
   padding: 1rem;
   border-radius: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container-notesInput .input-title,
+.container-notesInput .input-content {
+  background-color: inherit;
+  color: white;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  resize: none;
+}
+
+.container-notesInput .input-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  resize: none;
+}
+
+.container-notesInput .input-content {
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+.container-input-topRow {
+  display: flex;
+  align-items: center;
+}
+
+.container-input-topRow .container-pin {
+  font-size: 1.3rem;
+  cursor: pointer;
 }
