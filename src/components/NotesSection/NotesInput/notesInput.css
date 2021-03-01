@@ -2,10 +2,13 @@
   width: 45vw;
   border: 1px solid var(--color-light-gray);
   padding: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 
   display: flex;
   flex-direction: column;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .container-notesInput .input-title,
@@ -48,17 +51,17 @@
   margin-top: 1rem;
 }
 
-.container-bottomMenu button {
+.container-bottomMenu .icon-add {
   cursor: pointer;
   color: var(--color-placeholder);
   background: none;
   outline: none;
   border: none;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
-.container-bottomMenu button:hover {
+.container-bottomMenu .icon-add:hover {
   color: white;
 }

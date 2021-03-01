@@ -36,6 +36,7 @@ const notes = [
 
 export const NotesSection = () => {
   const [allNotes, setAllNotes] = useState(notes);
+  const [fullContainerVisible, setFullContainerVisibility] = useState(false);
   const addNewNote = (newNote) => {
     setAllNotes([
       ...allNotes,
@@ -49,13 +50,21 @@ export const NotesSection = () => {
       },
     ]);
   };
-  console.log(allNotes)
+  
+  const updateFullContainerVisibility = (updatedState) =>{
+    setFullContainerVisibility(updatedState)
+  }
+
+
   return (
-    <div className="section-notes">
-      <section className="section-input">
-        <NotesInput addNewNote={(newNote) => addNewNote(newNote)} />
+    <div className="section-notes" >
+      <section className="section-input" >
+        <NotesInput addNewNote={(newNote) => addNewNote(newNote)} 
+        updateFullContainerVisibility={(updatedState)=>updateFullContainerVisibility(updatedState)}
+        fullContainerVisible={fullContainerVisible}
+        />
       </section>
-      <section className="section-display">
+      <section className="section-display" onClick={() => updateFullContainerVisibility(false)}>
         <NotesDisplay notes={allNotes} />
       </section>
     </div>

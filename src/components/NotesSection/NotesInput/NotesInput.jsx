@@ -2,18 +2,26 @@ import { useState } from "react";
 import NotesMenu from "../NotesMenu/NotesMenu";
 import TagsDisplay from "../TagsDisplay/TagsDisplay";
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 import "./notesInput.css";
 
-const NotesInput = ({ addNewNote }) => {
+const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVisible }) => {
   const [titleState, setTitle] = useState("");
   const [contentState, setContent] = useState("");
   const [bgColor, setBgColor] = useState("");
   const [addedTags, addTag] = useState([]);
   const [isPinned, setPin] = useState(false);
+  
 
   const onClickAdd = () => {
-    addNewNote({ title: titleState, content: contentState, isPinned: isPinned, tags: addedTags, bgColor: bgColor });
+    addNewNote({
+      title: titleState,
+      content: contentState,
+      isPinned: isPinned,
+      tags: addedTags,
+      bgColor: bgColor,
+    });
 
     //reset all fields
     setTitle("");
@@ -48,6 +56,8 @@ const NotesInput = ({ addNewNote }) => {
     else setContent(event.target.value);
   };
 
+
+
   return (
     <div
       className="container-notesInput"
@@ -59,18 +69,22 @@ const NotesInput = ({ addNewNote }) => {
             : `var(${bgColor})`,
       }}
     >
-      <div className="container-input-topRow">
-        <textarea
-          rows="1"
-          className="input-title"
-          placeholder="Title"
-          value={titleState}
-          onChange={(event) => updateInput(event, "title")}
-        ></textarea>
-        <div className="container-pin" onClick={()=>setPin(!isPinned)}>
-          {isPinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
+      {fullContainerVisible ? (
+        <div className="container-input-topRow">
+          <textarea
+            rows="1"
+            className="input-title"
+            placeholder="Title"
+            value={titleState}
+            onChange={(event) => updateInput(event, "title")}
+          ></textarea>
+          <div className="container-pin" onClick={() => setPin(!isPinned)}>
+            {isPinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
+          </div>
         </div>
-      </div>
+      ) : (
+        <></>
+      )}
 
       <textarea
         rows="1"
@@ -78,24 +92,32 @@ const NotesInput = ({ addNewNote }) => {
         placeholder="Take a note..."
         value={contentState}
         onChange={(event) => updateInput(event, "content")}
+        onFocus={() => updateFullContainerVisibility(true)}
+       
+        style={!fullContainerVisible?{margin:"0"}:{}}
       ></textarea>
 
-      <div>
-        <TagsDisplay
-          tags={addedTags}
-          tagsId={"newNote"}
-          deleteTag={(tag) => deleteTag(tag)}
-        />
-      </div>
-      <div className="container-bottomMenu">
-      <NotesMenu
-        updateBgColor={(color) => updateBgColor(color)}
-        activeColor={bgColor}
-        updateTagsList={(tag) => updateTagsList(tag)}
-      />
-      <button onClick={onClickAdd}>Add</button>
-      </div>
-      
+      {fullContainerVisible ? (
+        <>
+          <div>
+            <TagsDisplay
+              tags={addedTags}
+              tagsId={"newNote"}
+              deleteTag={(tag) => deleteTag(tag)}
+            />
+          </div>
+          <div className="container-bottomMenu">
+            <NotesMenu
+              updateBgColor={(color) => updateBgColor(color)}
+              activeColor={bgColor}
+              updateTagsList={(tag) => updateTagsList(tag)}
+            />
+            <IoAddCircleOutline onClick={onClickAdd} className="icon-add"/>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
