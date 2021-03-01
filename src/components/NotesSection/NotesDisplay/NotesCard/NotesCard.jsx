@@ -2,6 +2,9 @@ import NotesMenu from "../../NotesMenu/NotesMenu";
 import TagsDisplay from "../../TagsDisplay/TagsDisplay";
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
 
+const maxTitleChars = 50;
+const maxContentChars = 300;
+
 const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
   console.log(bgColor);
   return (
@@ -17,7 +20,9 @@ const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
       }}
     >
       <div className="container-display-topRow">
-        <div className="display-title">{title}</div>
+        <div className="display-title">{}
+        {title.length > maxTitleChars ? `${title.substring(0, maxTitleChars)} . . .` : title}
+        </div>
         <div
           className="container-pin"
           //   onClick={() => setPin(!isPinned)}
@@ -27,7 +32,7 @@ const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
       </div>
 
       <div className="display-content">
-        {content.length > 200 ? `${content.substring(0, 200)} . . .` : content}
+        {content.length > maxContentChars ? `${content.substring(0, maxContentChars)} . . .` : content}
       </div>
       <div>
         <TagsDisplay
@@ -35,7 +40,7 @@ const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
           tagsId={tagId}
           deleteTag={(tag) => console.log(tag)}
         />
-      </div>
+      
       <div className="container-display-bottomMenu">
         <NotesMenu
           //   updateBgColor={(color) => updateBgColor(color)}
@@ -45,6 +50,7 @@ const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
           activeColor={bgColor}
           updateTagsList={(tag) => console.log(tag)}
         />
+      </div>
       </div>
     </div>
   );

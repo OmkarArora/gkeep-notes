@@ -13,6 +13,8 @@
   overflow: hidden;
   padding: 0 0.2rem 0.5rem 0.2rem;
   position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .container-display-topRow {

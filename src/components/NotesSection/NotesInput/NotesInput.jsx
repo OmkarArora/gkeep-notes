@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import NotesMenu from "../NotesMenu/NotesMenu";
 import TagsDisplay from "../TagsDisplay/TagsDisplay";
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
@@ -13,6 +13,9 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
   const [addedTags, addTag] = useState([]);
   const [isPinned, setPin] = useState(false);
   
+  const contentInputRef = useRef(null);
+  const titleInputRef = useRef(null);
+
 
   const onClickAdd = () => {
     addNewNote({
@@ -29,6 +32,8 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
     addTag([]);
     setBgColor("");
     setPin(false);
+    contentInputRef.current.style.height = "inherit";
+    titleInputRef.current.style.height = "inherit";
   };
 
   const updateBgColor = (color) => {
@@ -56,8 +61,6 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
     else setContent(event.target.value);
   };
 
-
-
   return (
     <div
       className="container-notesInput"
@@ -72,6 +75,7 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
       {fullContainerVisible ? (
         <div className="container-input-topRow">
           <textarea
+          ref={titleInputRef}
             rows="1"
             className="input-title"
             placeholder="Title"
@@ -87,6 +91,7 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
       )}
 
       <textarea
+      ref={contentInputRef}
         rows="1"
         className="input-content"
         placeholder="Take a note..."
