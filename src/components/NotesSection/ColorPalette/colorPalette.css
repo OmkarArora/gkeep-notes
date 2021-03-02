@@ -1,5 +1,4 @@
 .container-colorPalette {
-  /* width: 130px; */
   height: max-content;
   position: relative;
   cursor: pointer;
@@ -13,8 +12,10 @@
   border-radius: 0.5rem;
 
   cursor: pointer;
-  z-index: 10;
+  z-index: 100;
   position: absolute;
+  bottom: 25px;
+  left: 5px;
   display: none;
 
   border: 1px solid var(--color-placeholder);

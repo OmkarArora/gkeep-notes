@@ -5,8 +5,22 @@ import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
 const maxTitleChars = 50;
 const maxContentChars = 300;
 
-const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
-  console.log(bgColor);
+const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned, updateDisplayNote }) => {
+
+  const updateBgColor = (color) => {
+    updateDisplayNote(tagId, "bgColor", color);
+  }
+
+  const updateTagsList = (newTag) => {
+    let _tags = [...tags, newTag];
+    updateDisplayNote(tagId, "tags", _tags);
+  }
+
+  const deleteTag = (tag) => {
+    let _tags = tags.filter(item => item!==tag);
+    updateDisplayNote(tagId, "tags", _tags);
+  }
+
   return (
     <div
       className="notes-card"
@@ -25,7 +39,7 @@ const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
         </div>
         <div
           className="container-pin"
-          //   onClick={() => setPin(!isPinned)}
+            onClick={() => updateDisplayNote(tagId, "isPinned", !isPinned)}
         >
           {isPinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
         </div>
@@ -38,17 +52,14 @@ const NotesCard = ({ tagId, title, content, bgColor, tags, isPinned }) => {
         <TagsDisplay
           tags={tags}
           tagsId={tagId}
-          deleteTag={(tag) => console.log(tag)}
+          deleteTag={(tag) => deleteTag(tag)}
         />
       
       <div className="container-display-bottomMenu">
         <NotesMenu
-          //   updateBgColor={(color) => updateBgColor(color)}
-          //   activeColor={bgColor}
-          //   updateTagsList={(tag) => updateTagsList(tag)}
-          updateBgColor={(color) => console.log(color)}
-          activeColor={bgColor}
-          updateTagsList={(tag) => console.log(tag)}
+            updateBgColor={(color) => updateBgColor(color)}
+            activeColor={bgColor}
+            updateTagsList={(tag) => updateTagsList(tag)}
         />
       </div>
       </div>
