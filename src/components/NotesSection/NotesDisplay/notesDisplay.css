@@ -15,6 +15,20 @@
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto;
+
+  position: relative;
+}
+
+.container-notes .notes-card:hover .container-display-bottomMenu {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.container-notes .notes-card .container-display-bottomMenu {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
 }
 
 .container-display-topRow {
@@ -43,13 +57,11 @@
   font-weight: 400;
 }
 
-/* .container-display-bottomMenu {
-  position: absolute;
-  bottom: 5px;
-} */
+/* TODO: Detect if device is touch only, and remove visibilty animation for menu hover, below css is a bad alternative to that */
 
-/* @media (max-width: 850px) {
-  .container-notes {
-    grid-auto-rows: 200px;
+@media (max-width: 768px) {
+  .container-notes .notes-card .container-display-bottomMenu {
+    visibility: visible;
+    opacity: 1;
   }
-} */
+}
