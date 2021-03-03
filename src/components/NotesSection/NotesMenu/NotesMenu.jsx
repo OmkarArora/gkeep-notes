@@ -1,16 +1,41 @@
 import ColorPalette from "../ColorPalette/ColorPalette";
 import TagsInput from "../TagsInput/TagsInput";
 
+import { FiEdit2 } from "react-icons/fi";
+
 import "./notesMenu.css";
 
-const NotesMenu = ({ updateBgColor, bgColor, updateTagsList, tagsId }) => {
+const NotesMenu = ({
+  updateBgColor,
+  bgColor,
+  updateTagsList,
+  tagsId,
+  showEditIcon,
+  updateModalVisibility,
+}) => {
   return (
     <div className="container-notesMenu">
-      <ColorPalette
-        updateBgColor={(color) => updateBgColor(color)}
-        activeColor={bgColor}
-      />
-      <TagsInput updateTagsList={(tag) => updateTagsList(tag)} tagsId={tagsId}/>
+      <div className="container-left">
+        <ColorPalette
+          updateBgColor={(color) => updateBgColor(color)}
+          activeColor={bgColor}
+        />
+        <TagsInput
+          updateTagsList={(tag) => updateTagsList(tag)}
+          tagsId={tagsId}
+        />
+      </div>
+
+      {showEditIcon ? (
+        <div className="container-right">
+          <FiEdit2
+            onClick={() => updateModalVisibility(true)}
+            className="icon-editNote"
+          />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
