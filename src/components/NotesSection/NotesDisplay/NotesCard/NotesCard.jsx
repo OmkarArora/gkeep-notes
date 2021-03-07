@@ -96,7 +96,7 @@ const NotesCard = ({
         bgColor={bgColor}
         tags={tags}
         isPinned={isPinned}
-        updateDisplayNote={updateDisplayNote}
+        updateDisplayNote={(noteId, property, updatedValue)=>updateDisplayNote(noteId, property, updatedValue)}
         deleteTag={(tag) => deleteTag(tag)}
         updateBgColor={(color) => updateBgColor(color)}
         updateTagsList={(tag) => updateTagsList(tag)}
