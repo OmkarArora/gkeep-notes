@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  border-bottom: 1px solid var(--color-light-gray);
+
+  padding: 0.5rem;
+}
+
+.header .header-title {
+  font-size: 1.5rem;
+}
+
+.icon.icon-menu {
+  font-size: 1.6rem;
+  margin-right: 5px;
+}

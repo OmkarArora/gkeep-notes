@@ -1,0 +1,18 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding-top: 80px;
+}
+
+.icon {
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 50%;
+}
+
+.icon:hover {
+  background-color: var(--color-active);
+}
