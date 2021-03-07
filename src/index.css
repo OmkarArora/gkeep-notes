@@ -9,8 +9,10 @@
   --color-yellow: #635d19;
   --color-light-gray: #5f6368;
   --color-placeholder: #80868b;
-
   --color-active: #41331c;
+
+  --padding-header: 80px;
+  --padding-sidenav: 80px;
 }
 
 body {

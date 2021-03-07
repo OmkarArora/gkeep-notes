@@ -1,4 +1,4 @@
-import { NotesSection, Header } from "./components";
+import { NotesSection, Header, Sidenav } from "./components";
 import "./App.css";
 
 const notes = [
@@ -49,6 +49,7 @@ const App = () => {
       <div className="header-container">
         <Header />
       </div>
+      <div><Sidenav/></div>
       <main className="main">
         <NotesSection />
       </main>

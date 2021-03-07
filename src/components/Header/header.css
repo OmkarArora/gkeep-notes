@@ -8,6 +8,9 @@
   border-bottom: 1px solid var(--color-light-gray);
 
   padding: 0.5rem;
+  z-index: 20;
+
+  background-color: var(--color-dark);
 }
 
 .header .header-title {

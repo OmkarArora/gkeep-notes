@@ -4,7 +4,11 @@
 }
 
 .main {
-  padding-top: 80px;
+  padding-top: var(--padding-header);
+  padding-left: var(--padding-sidenav);
+  padding-right: 30px;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .icon {

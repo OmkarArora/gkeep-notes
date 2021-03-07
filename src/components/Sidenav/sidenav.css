@@ -1,0 +1,13 @@
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--padding-header);
+  position: fixed;
+  left: 0;
+  padding-left: 0.5rem;
+}
+
+.sidenav .icon {
+  font-size: 1.6rem;
+  margin-right: 5px;
+}
