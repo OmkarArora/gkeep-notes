@@ -11,8 +11,8 @@
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-.container-notesInput .input-title,
-.container-notesInput .input-content {
+.input-title,
+.input-content {
   background-color: inherit;
   color: white;
   outline: none;
@@ -21,14 +21,14 @@
   resize: none;
 }
 
-.container-notesInput .input-title {
+.input-title {
   font-weight: 600;
   font-size: 1.2rem;
   resize: none;
   flex: 1;
 }
 
-.container-notesInput .input-content {
+.input-content {
   font-size: 1rem;
   margin-top: 0.4rem;
 }

@@ -90,6 +90,16 @@ const NotesCard = ({
       <NotesEditModal
         modalVisible={modalVisible}
         updateModalVisibility={(newState) => updateModalVisibility(newState)}
+        tagId={tagId}
+        title={title}
+        content={content}
+        bgColor={bgColor}
+        tags={tags}
+        isPinned={isPinned}
+        updateDisplayNote={updateDisplayNote}
+        deleteTag={(tag) => deleteTag(tag)}
+        updateBgColor={(color) => updateBgColor(color)}
+        updateTagsList={(tag) => updateTagsList(tag)}
       />
     </div>
   );

@@ -12,6 +12,7 @@ const NotesMenu = ({
   tagsId,
   showEditIcon,
   updateModalVisibility,
+  isEditOpen
 }) => {
   return (
     <div className="container-notesMenu">
@@ -28,10 +29,12 @@ const NotesMenu = ({
 
       {showEditIcon ? (
         <div className="container-right">
+          {isEditOpen?<span onClick={()=>updateModalVisibility(false)}>Close</span>:
           <FiEdit2
             onClick={() => updateModalVisibility(true)}
             className="icon-editNote"
           />
+      }
         </div>
       ) : (
         <></>
