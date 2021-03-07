@@ -5,7 +5,7 @@ import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
 import NotesEditModal from "../NotesEditModal/NotesEditModal";
 
 const maxTitleChars = 50;
-const maxContentChars = 300;
+const maxContentChars = 200;
 
 const NotesCard = ({
   tagId,
