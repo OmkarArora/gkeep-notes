@@ -40,6 +40,7 @@
 .container-display-topRow .container-pin {
   font-size: 1.3rem;
   cursor: pointer;
+  align-self: flex-start;
 }
 
 .display-title {
