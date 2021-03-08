@@ -5,6 +5,32 @@
   grid-gap: 10px;
 }
 
+.section-pinned-notes,
+.section-other-notes {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.section-pinned-notes::before {
+  content: "PINNED";
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  color: #9aa0a6;
+  font-weight: bold;
+}
+
+.section-other-notes::before {
+  content: "OTHERS";
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  color: #9aa0a6;
+  font-weight: bold;
+}
+
 /* Display Cards */
 
 .container-notes .notes-card {
