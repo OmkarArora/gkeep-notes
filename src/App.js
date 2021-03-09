@@ -1,5 +1,6 @@
-import { NotesSection, Header, Sidenav } from "./components";
+import { NotesSection, Header, Sidenav, TrashSection } from "./components";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const notes = [
   {
@@ -49,10 +50,17 @@ const App = () => {
       <div className="header-container">
         <Header />
       </div>
-      <div><Sidenav/></div>
-      <main className="main">
-        <NotesSection />
-      </main>
+      <Router>
+        <div>
+          <Sidenav />
+        </div>
+        <main className="main">
+          <Switch>
+            <Route exact path="/trash" component={TrashSection} />
+            <Route exact path="/" component={NotesSection} />
+          </Switch>
+        </main>
+      </Router>
     </div>
   );
 };

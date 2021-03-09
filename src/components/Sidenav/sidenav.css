@@ -8,7 +8,7 @@
 
   --transition-speed: 600ms;
   height: 100%;
-  z-index: 10;
+  z-index: 15;
   background-color: var(--color-dark);
   font-size: 1.3rem;
 }
