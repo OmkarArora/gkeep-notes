@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import NotesDisplay from "./NotesDisplay/NotesDisplay";
 import NotesInput from "./NotesInput/NotesInput";
-
+import {v4 as uuid} from "uuid";
 import "./notesSection.css";
 
 export const NotesSection = () => {
@@ -11,12 +11,14 @@ export const NotesSection = () => {
     setAllNotes([
       ...allNotes,
       {
-        id: allNotes.length + 1,
+        id: uuid(),
         title: newNote.title,
         content: newNote.content,
         bgColor: newNote.bgColor,
         isPinned: newNote.isPinned,
-        tags: newNote.tags
+        tags: newNote.tags,
+        isTrashed: false,
+        trashedDate: null,
       },
     ]);
   };
@@ -34,6 +36,7 @@ export const NotesSection = () => {
     let _allNotes = [...allNotes];
     let note = _allNotes.find(item => item.id===noteId);
     note[`${property}`] = updatedValue;
+    if(property==="isTrashed") note["isPinned"] = false;
     setAllNotes(_allNotes);
   }
 

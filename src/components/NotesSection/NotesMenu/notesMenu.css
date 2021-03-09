@@ -1,6 +1,7 @@
 .container-notesMenu {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 8px;
   font-size: 1rem;
   width: 100%;
@@ -10,9 +11,13 @@
 .container-notesMenu .container-left {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .container-notesMenu .container-right {
   padding-right: 3px;
   cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }

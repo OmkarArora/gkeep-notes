@@ -2,9 +2,10 @@ import NotesCard from "./NotesCard/NotesCard";
 
 import "./notesDisplay.css";
 
-const NotesDisplay = ({ notes, updateDisplayNote }) => {
-  const pinnedNotes = notes.filter((note) => note.isPinned);
-  const otherNotes = notes.filter((note) => !note.isPinned);
+const NotesDisplay = ({ notes, updateDisplayNote, inTrash, deleteForever }) => {
+  const pinnedNotes = notes.filter((note) => note.isPinned && !note.isTrashed);
+  const otherNotes = notes.filter((note) => !note.isPinned && !note.isTrashed);
+
   return pinnedNotes.length === 0 ? (
     <div className="container-notes">
       {notes.map((item) => (
@@ -19,6 +20,8 @@ const NotesDisplay = ({ notes, updateDisplayNote }) => {
           updateDisplayNote={(id, property, value) =>
             updateDisplayNote(id, property, value)
           }
+          inTrash={inTrash}
+          deleteForever={(id)=>deleteForever(id)}
         />
       ))}
     </div>

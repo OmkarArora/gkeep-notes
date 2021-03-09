@@ -15,12 +15,18 @@ const NotesCard = ({
   tags,
   isPinned,
   updateDisplayNote,
+  inTrash,
+  deleteForever
 }) => {
   const [modalVisible, setModalVisibility] = useState(false);
 
   const updateBgColor = (color) => {
     updateDisplayNote(tagId, "bgColor", color);
   };
+
+  const deleteNote = () => {
+    updateDisplayNote(tagId, "isTrashed", true);
+  }
 
   const updateTagsList = (newTag) => {
     let _tags = [...tags, newTag];
@@ -83,6 +89,9 @@ const NotesCard = ({
               updateTagsList={(tag) => updateTagsList(tag)}
               showEditIcon={true}
               updateModalVisibility={(newState) => updateModalVisibility(newState)}
+              deleteNote={()=>deleteNote()}
+              inTrash={inTrash}
+              deleteForever={()=>deleteForever(tagId)}
             />
           </div>
         </div>
