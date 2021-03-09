@@ -116,6 +116,7 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
               updateBgColor={(color) => updateBgColor(color)}
               activeColor={bgColor}
               updateTagsList={(tag) => updateTagsList(tag)}
+              isNewNote={true}
             />
             <IoAddCircleOutline onClick={onClickAdd} className="icon-add"/>
           </div>

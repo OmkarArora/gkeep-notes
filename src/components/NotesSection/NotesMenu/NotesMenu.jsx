@@ -19,13 +19,17 @@ const NotesMenu = ({
   inTrash,
   deleteForever,
   restoreNote,
+  isNewNote,
 }) => {
   return (
     <div className="container-notesMenu">
       {inTrash ? (
         <>
           <div className="container-left">
-            <FaTrashAlt className="icon-menu icon-deleteForever" onClick={() => deleteForever()} />
+            <FaTrashAlt
+              className="icon-menu icon-deleteForever"
+              onClick={() => deleteForever()}
+            />
             <FaTrashRestoreAlt
               className="icon-menu icon-restore"
               onClick={() => restoreNote()}
@@ -47,10 +51,15 @@ const NotesMenu = ({
             />
           </div>
           <div className="container-right">
-            <RiDeleteBin6Line
-              className="icon-menu icon-delete"
-              onClick={() => deleteNote()}
-            />
+            {!isNewNote ? (
+              <RiDeleteBin6Line
+                className="icon-menu icon-delete"
+                onClick={() => deleteNote()}
+              />
+            ) : (
+              <></>
+            )}
+
             {showEditIcon ? (
               <>
                 {isEditOpen ? (
