@@ -23,9 +23,16 @@ export const TrashSection = () => {
   };
 
   const deleteForever = (id) => {
-	let _allNotes = allNotes.filter(note => note.id!==id);
-	setAllNotes(_allNotes);
-  }
+    let _allNotes = allNotes.filter((note) => note.id !== id);
+    setAllNotes(_allNotes);
+  };
+
+  const restoreNote = (id) => {
+    let _allNotes = [...allNotes];
+    let note = _allNotes.find(item => item.id===id);
+    note.isTrashed= false;
+    setAllNotes(_allNotes);
+  };
 
   return (
     <div className="section-notes">
@@ -38,8 +45,9 @@ export const TrashSection = () => {
           updateDisplayNote={(id, property, value) =>
             updateDisplayNote(id, property, value)
           }
-		  inTrash={true}
-		  deleteForever={(id)=>deleteForever(id)}
+          inTrash={true}
+          deleteForever={(id) => deleteForever(id)}
+          restoreNote={id => restoreNote(id)}
         />
       </section>
     </div>

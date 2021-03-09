@@ -17,53 +17,59 @@ const NotesMenu = ({
   isEditOpen,
   deleteNote,
   inTrash,
-  deleteForever
+  deleteForever,
+  restoreNote,
 }) => {
   return (
     <div className="container-notesMenu">
-      {inTrash?
-      <>
-      <div className="container-left">
-        <FaTrashAlt
-          onClick={() => deleteForever()}
-        />
-        <FaTrashRestoreAlt
-          
-        />
-      </div>
-      </>
-      : 
-      <>
-        <div className="container-left">
-        <ColorPalette
-          updateBgColor={(color) => updateBgColor(color)}
-          activeColor={bgColor}
-        />
-        <TagsInput
-          updateTagsList={(tag) => updateTagsList(tag)}
-          tagsId={tagsId}
-        />
-      </div>
-      <div className="container-right">
-        <RiDeleteBin6Line className="icon-delete" onClick={()=>deleteNote()}/>
-        {showEditIcon ? (
-          <>
-            {isEditOpen ? (
-              <span onClick={() => updateModalVisibility(false)}>Close</span>
+      {inTrash ? (
+        <>
+          <div className="container-left">
+            <FaTrashAlt className="icon-menu icon-deleteForever" onClick={() => deleteForever()} />
+            <FaTrashRestoreAlt
+              className="icon-menu icon-restore"
+              onClick={() => restoreNote()}
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="container-left">
+            <ColorPalette
+              className="icon-menu"
+              updateBgColor={(color) => updateBgColor(color)}
+              activeColor={bgColor}
+            />
+            <TagsInput
+              className="icon-menu"
+              updateTagsList={(tag) => updateTagsList(tag)}
+              tagsId={tagsId}
+            />
+          </div>
+          <div className="container-right">
+            <RiDeleteBin6Line
+              className="icon-menu icon-delete"
+              onClick={() => deleteNote()}
+            />
+            {showEditIcon ? (
+              <>
+                {isEditOpen ? (
+                  <span onClick={() => updateModalVisibility(false)}>
+                    Close
+                  </span>
+                ) : (
+                  <FiEdit2
+                    onClick={() => updateModalVisibility(true)}
+                    className="icon-menu icon-editNote"
+                  />
+                )}
+              </>
             ) : (
-              <FiEdit2
-                onClick={() => updateModalVisibility(true)}
-                className="icon-editNote"
-              />
+              <></>
             )}
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      </>
-      }
-      
+          </div>
+        </>
+      )}
     </div>
   );
 };

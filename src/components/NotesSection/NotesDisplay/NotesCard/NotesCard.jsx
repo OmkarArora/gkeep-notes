@@ -16,7 +16,8 @@ const NotesCard = ({
   isPinned,
   updateDisplayNote,
   inTrash,
-  deleteForever
+  deleteForever,
+  restoreNote,
 }) => {
   const [modalVisible, setModalVisibility] = useState(false);
 
@@ -26,7 +27,7 @@ const NotesCard = ({
 
   const deleteNote = () => {
     updateDisplayNote(tagId, "isTrashed", true);
-  }
+  };
 
   const updateTagsList = (newTag) => {
     let _tags = [...tags, newTag];
@@ -60,7 +61,6 @@ const NotesCard = ({
             {title.length > maxTitleChars
               ? `${title.substring(0, maxTitleChars)} . . .`
               : title}
-             
           </div>
           <div
             className="container-pin"
@@ -88,10 +88,13 @@ const NotesCard = ({
               activeColor={bgColor}
               updateTagsList={(tag) => updateTagsList(tag)}
               showEditIcon={true}
-              updateModalVisibility={(newState) => updateModalVisibility(newState)}
-              deleteNote={()=>deleteNote()}
+              updateModalVisibility={(newState) =>
+                updateModalVisibility(newState)
+              }
+              deleteNote={() => deleteNote()}
               inTrash={inTrash}
-              deleteForever={()=>deleteForever(tagId)}
+              deleteForever={() => deleteForever(tagId)}
+              restoreNote={() => restoreNote(tagId)}
             />
           </div>
         </div>
@@ -105,7 +108,9 @@ const NotesCard = ({
         bgColor={bgColor}
         tags={tags}
         isPinned={isPinned}
-        updateDisplayNote={(noteId, property, updatedValue)=>updateDisplayNote(noteId, property, updatedValue)}
+        updateDisplayNote={(noteId, property, updatedValue) =>
+          updateDisplayNote(noteId, property, updatedValue)
+        }
         deleteTag={(tag) => deleteTag(tag)}
         updateBgColor={(color) => updateBgColor(color)}
         updateTagsList={(tag) => updateTagsList(tag)}

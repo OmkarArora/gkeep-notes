@@ -16,8 +16,18 @@
 
 .container-notesMenu .container-right {
   padding-right: 3px;
-  cursor: pointer;
   display: flex;
   gap: 8px;
   align-items: center;
+}
+
+.icon-menu {
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.icon-menu.icon-deleteForever,
+.icon-menu.icon-restore {
+  font-size: 0.9rem;
+  padding-bottom: 0.3rem;
 }
