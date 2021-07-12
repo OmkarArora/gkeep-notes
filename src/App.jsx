@@ -1,7 +1,13 @@
-import { NotesSection, Header, Sidenav, TrashSection } from "./components";
+import {
+  NotesSection,
+  Header,
+  Navbar,
+  Sidenav,
+  TrashSection,
+} from "./components";
+import { Routes, Route } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {v4 as uuid} from "uuid";
 
 const notes = [
   {
@@ -48,20 +54,21 @@ const App = () => {
   }
   return (
     <div className="App">
-      <div className="header-container">
+      <div className="container-header">
         <Header />
       </div>
-      <Router>
-        <div>
-          <Sidenav />
-        </div>
-        <main className="main">
-          <Switch>
-            <Route exact path="/trash" component={TrashSection} />
-            <Route exact path="/" component={NotesSection} />
-          </Switch>
-        </main>
-      </Router>
+      <div className="container-sidenav">
+        <Sidenav />
+      </div>
+      <main className="main">
+        <Routes>
+          <Route path="/trash" element={<TrashSection />} />
+          <Route path="/" element={<NotesSection />} />
+        </Routes>
+      </main>
+      <div className="container-footer">
+        <Navbar />
+      </div>
     </div>
   );
 };
