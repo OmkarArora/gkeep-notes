@@ -8,6 +8,7 @@ const NotesEditModal = ({
   modalVisible,
   updateModalVisibility,
   tagId,
+  noteId,
   title,
   content,
   bgColor,
@@ -55,7 +56,7 @@ const NotesEditModal = ({
         <div
           className="notes-card"
           style={{
-            backgroundColor: bgColor === "" ? "" : `var(${bgColor})`,
+            backgroundColor: bgColor === "" ? `var(--color-dark)` : `var(${bgColor})`,
             borderColor:
               bgColor === "" || bgColor.includes("brown")
                 ? `var(--color-light-gray)`
@@ -102,6 +103,7 @@ const NotesEditModal = ({
                   updateModalVisibility(newState)
                 }
                 isEditOpen={true}
+                noteId={noteId}
               />
             </div>
           </div>

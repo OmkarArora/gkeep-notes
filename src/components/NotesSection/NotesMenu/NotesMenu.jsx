@@ -76,7 +76,7 @@ const NotesMenu = ({
             {showEditIcon ? (
               <>
                 {isEditOpen ? (
-                  <span onClick={() => updateModalVisibility(false)}>
+                  <span onClick={() => updateModalVisibility(false)} className="modal-closeBtn">
                     Close
                   </span>
                 ) : (
