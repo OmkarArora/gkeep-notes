@@ -1,10 +1,14 @@
-import { useNotes } from "../../contexts";
+import { useNav, useNotes } from "../../contexts";
 import NotesDisplay from "../NotesSection/NotesDisplay/NotesDisplay";
 import { FcEmptyTrash } from "react-icons/fc";
 import "./trashSection.css";
+import { useEffect } from "react";
 
 export const TrashSection = () => {
   const { notes } = useNotes();
+  const { setActiveNavLink } = useNav();
+
+  useEffect(() => setActiveNavLink("trash"), [setActiveNavLink]);
 
   const trashedNotes = notes.filter((note) => note.isTrashed);
 

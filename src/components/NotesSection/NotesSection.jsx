@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
 import NotesDisplay from "./NotesDisplay/NotesDisplay";
 import NotesInput from "./NotesInput/NotesInput";
-import { useNotes } from "../../contexts";
+import { useNav } from "../../contexts";
 import "./notesSection.css";
 
 export const NotesSection = () => {
-  const { notes } = useNotes();
   const [fullContainerVisible, setFullContainerVisibility] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("gKeepAllNotes", JSON.stringify(notes));
-  }, [notes]);
+  const {setActiveNavLink} = useNav();
+  useEffect(() => setActiveNavLink("home"), [setActiveNavLink]);
 
   const updateFullContainerVisibility = (updatedState) => {
     setFullContainerVisibility(updatedState);
