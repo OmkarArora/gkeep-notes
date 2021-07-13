@@ -13,7 +13,7 @@ export const TrashSection = () => {
   const trashedNotes = notes.filter((note) => note.isTrashed);
 
   return (
-    <div className="section-notes">
+    <div className="section-notes trash-section">
       <section
         className="section-display"
         // onClick={() => updateFullContainerVisibility(false)}
