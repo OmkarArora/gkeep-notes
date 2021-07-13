@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <div className="navbar-mobile">
       <Link to="/">
-        <div className="btn-nav btn-nav-home">
+        <div className="btn-nav">
           <div className="icon icon-home">
             {activeNavLink === "home" ? <RiHome5Fill /> : <RiHome5Line />}
           </div>
@@ -23,7 +23,7 @@ export const Navbar = () => {
       </Link>
 
       <Link to="/trash">
-        <div className="btn-nav btn-nav-home">
+        <div className="btn-nav">
           <div className="icon icon-home">
             {activeNavLink === "trash" ? (
               <RiDeleteBin7Fill />

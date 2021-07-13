@@ -64,9 +64,4 @@ code {
 .icon {
   cursor: pointer;
   padding: 0.8rem;
-  border-radius: 50%;
-}
-
-.icon:hover {
-  background-color: var(--color-active);
 }
