@@ -2,6 +2,7 @@ import TagsDisplay from "../../TagsDisplay/TagsDisplay";
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
 import NotesMenu from "../../NotesMenu/NotesMenu";
 import "./notesEditModal.css";
+import { useNotes } from "../../../../contexts";
 
 const NotesEditModal = ({
   modalVisible,
@@ -12,17 +13,25 @@ const NotesEditModal = ({
   bgColor,
   tags,
   isPinned,
-  updateDisplayNote,
   deleteTag,
   updateBgColor,
   updateTagsList,
 }) => {
+  const { dispatch } = useNotes();
+
+  const updateDisplayNote = (id, property, value) => {
+    dispatch({
+      type: "UPDATE_NOTE_PROPERTY",
+      payload: { noteId: id, property, updatedValue: value },
+    });
+  };
+  
   const updateInput = (event, type) => {
-    if(event.target.scrollHeight<400){
+    if (event.target.scrollHeight < 400) {
       event.target.style.height = "inherit";
       event.target.style.height = `${event.target.scrollHeight}px`;
       event.target.style.overflow = "hidden";
-    }else{
+    } else {
       event.target.style.overflowY = "scroll";
     }
     updateDisplayNote(tagId, type, event.target.value);
@@ -30,12 +39,12 @@ const NotesEditModal = ({
 
   const getRows = (text) => {
     let length = text.length;
-    if(length<=70) return 3;
-    if(length<=140) return 4;
-    if(length<=210) return 6;
-    if(length<=400) return 8;
+    if (length <= 70) return 3;
+    if (length <= 140) return 4;
+    if (length <= 210) return 6;
+    if (length <= 400) return 8;
     return 12;
-  }
+  };
 
   return (
     <div
@@ -59,7 +68,7 @@ const NotesEditModal = ({
               value={title}
               rows={getRows(title)}
               className="input-title"
-              onChange={(event)=>updateInput(event,"title")}
+              onChange={(event) => updateInput(event, "title")}
             />
             <div
               className="container-pin"
@@ -74,7 +83,7 @@ const NotesEditModal = ({
             placeholder="Take a note..."
             value={content}
             className="input-content"
-            onChange={(event)=>updateInput(event, "content")}
+            onChange={(event) => updateInput(event, "content")}
           />
           <div>
             <TagsDisplay

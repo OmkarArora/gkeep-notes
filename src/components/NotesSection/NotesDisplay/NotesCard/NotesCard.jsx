@@ -3,23 +3,30 @@ import NotesMenu from "../../NotesMenu/NotesMenu";
 import TagsDisplay from "../../TagsDisplay/TagsDisplay";
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
 import NotesEditModal from "../NotesEditModal/NotesEditModal";
+import { useNotes } from "../../../../contexts";
 
 const maxTitleChars = 50;
 const maxContentChars = 200;
 
 const NotesCard = ({
+  noteId,
   tagId,
   title,
   content,
   bgColor,
   tags,
   isPinned,
-  updateDisplayNote,
   inTrash,
-  deleteForever,
-  restoreNote,
 }) => {
   const [modalVisible, setModalVisibility] = useState(false);
+  const { dispatch } = useNotes();
+
+  const updateDisplayNote = (id, property, value) => {
+    dispatch({
+      type: "UPDATE_NOTE_PROPERTY",
+      payload: { noteId: id, property, updatedValue: value },
+    });
+  };
 
   const updateBgColor = (color) => {
     updateDisplayNote(tagId, "bgColor", color);
@@ -84,6 +91,7 @@ const NotesCard = ({
 
           <div className="container-display-bottomMenu">
             <NotesMenu
+              noteId={noteId}
               updateBgColor={(color) => updateBgColor(color)}
               activeColor={bgColor}
               updateTagsList={(tag) => updateTagsList(tag)}
@@ -93,8 +101,6 @@ const NotesCard = ({
               }
               deleteNote={() => deleteNote()}
               inTrash={inTrash}
-              deleteForever={() => deleteForever(tagId)}
-              restoreNote={() => restoreNote(tagId)}
             />
           </div>
         </div>
@@ -103,14 +109,12 @@ const NotesCard = ({
         modalVisible={modalVisible}
         updateModalVisibility={(newState) => updateModalVisibility(newState)}
         tagId={tagId}
+        noteId={noteId}
         title={title}
         content={content}
         bgColor={bgColor}
         tags={tags}
         isPinned={isPinned}
-        updateDisplayNote={(noteId, property, updatedValue) =>
-          updateDisplayNote(noteId, property, updatedValue)
-        }
         deleteTag={(tag) => deleteTag(tag)}
         updateBgColor={(color) => updateBgColor(color)}
         updateTagsList={(tag) => updateTagsList(tag)}

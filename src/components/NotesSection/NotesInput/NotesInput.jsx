@@ -1,30 +1,40 @@
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
+import { v4 as uuid } from "uuid";
 import NotesMenu from "../NotesMenu/NotesMenu";
 import TagsDisplay from "../TagsDisplay/TagsDisplay";
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai";
 import { IoAddCircleOutline } from "react-icons/io5";
-
+import { useNotes } from "../../../contexts";
 import "./notesInput.css";
 
-const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVisible }) => {
+const NotesInput = ({
+  updateFullContainerVisibility,
+  fullContainerVisible,
+}) => {
   const [titleState, setTitle] = useState("");
   const [contentState, setContent] = useState("");
   const [bgColor, setBgColor] = useState("");
   const [addedTags, addTag] = useState([]);
   const [isPinned, setPin] = useState(false);
-  
+
   const contentInputRef = useRef(null);
   const titleInputRef = useRef(null);
 
+  const { dispatch } = useNotes();
 
   const onClickAdd = () => {
-    addNewNote({
+    let note = {
+      id: uuid(),
       title: titleState,
       content: contentState,
+      bgColor: bgColor,
       isPinned: isPinned,
       tags: addedTags,
-      bgColor: bgColor,
-    });
+      isTrashed: false,
+      trashedDate: null,
+    }
+    
+    dispatch({type: "ADD_NEW_NOTE", payload: {note}})
 
     //reset all fields
     setTitle("");
@@ -75,7 +85,7 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
       {fullContainerVisible ? (
         <div className="container-input-topRow">
           <textarea
-          ref={titleInputRef}
+            ref={titleInputRef}
             rows="1"
             className="input-title"
             placeholder="Title"
@@ -91,15 +101,14 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
       )}
 
       <textarea
-      ref={contentInputRef}
+        ref={contentInputRef}
         rows="1"
         className="input-content"
         placeholder="Take a note..."
         value={contentState}
         onChange={(event) => updateInput(event, "content")}
         onFocus={() => updateFullContainerVisibility(true)}
-       
-        style={!fullContainerVisible?{margin:"0"}:{}}
+        style={!fullContainerVisible ? { margin: "0" } : {}}
       ></textarea>
 
       {fullContainerVisible ? (
@@ -118,7 +127,7 @@ const NotesInput = ({ addNewNote, updateFullContainerVisibility, fullContainerVi
               updateTagsList={(tag) => updateTagsList(tag)}
               isNewNote={true}
             />
-            <IoAddCircleOutline onClick={onClickAdd} className="icon-add"/>
+            <IoAddCircleOutline onClick={onClickAdd} className="icon-add" />
           </div>
         </>
       ) : (

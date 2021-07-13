@@ -1,38 +1,12 @@
-import { useState, useEffect } from "react";
+import { useNotes } from "../../contexts";
 import NotesDisplay from "../NotesSection/NotesDisplay/NotesDisplay";
+import { FcEmptyTrash } from "react-icons/fc";
+import "./trashSection.css";
 
 export const TrashSection = () => {
-  const [allNotes, setAllNotes] = useState(
-    localStorage.getItem("gKeepAllNotes")
-      ? JSON.parse(localStorage.getItem("gKeepAllNotes"))
-      : []
-  );
+  const { notes } = useNotes();
 
-  const trashedNotes = allNotes.filter((note) => note.isTrashed);
-
-  useEffect(() => {
-    localStorage.setItem("gKeepAllNotes", JSON.stringify(allNotes));
-  }, [allNotes]);
-
-  const updateDisplayNote = (noteId, property, updatedValue) => {
-    let _allNotes = [...allNotes];
-    let note = _allNotes.find((item) => item.id === noteId);
-    note[`${property}`] = updatedValue;
-    if (property === "isTrashed") note["isPinned"] = false;
-    setAllNotes(_allNotes);
-  };
-
-  const deleteForever = (id) => {
-    let _allNotes = allNotes.filter((note) => note.id !== id);
-    setAllNotes(_allNotes);
-  };
-
-  const restoreNote = (id) => {
-    let _allNotes = [...allNotes];
-    let note = _allNotes.find(item => item.id===id);
-    note.isTrashed= false;
-    setAllNotes(_allNotes);
-  };
+  const trashedNotes = notes.filter((note) => note.isTrashed);
 
   return (
     <div className="section-notes">
@@ -40,16 +14,16 @@ export const TrashSection = () => {
         className="section-display"
         // onClick={() => updateFullContainerVisibility(false)}
       >
-        <NotesDisplay
-          notes={trashedNotes}
-          updateDisplayNote={(id, property, value) =>
-            updateDisplayNote(id, property, value)
-          }
-          inTrash={true}
-          deleteForever={(id) => deleteForever(id)}
-          restoreNote={id => restoreNote(id)}
-        />
+        <NotesDisplay inTrash={true} />
       </section>
+      {trashedNotes.length === 0 && (
+        <div className="container-trash-placeholder">
+          <div className="icon-trash">
+            <FcEmptyTrash />
+          </div>
+          <div className="text-placeholder">Trash is empty</div>
+        </div>
+      )}
     </div>
   );
 };

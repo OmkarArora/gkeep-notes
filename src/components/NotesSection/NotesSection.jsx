@@ -1,55 +1,31 @@
 import { useState, useEffect } from "react";
 import NotesDisplay from "./NotesDisplay/NotesDisplay";
 import NotesInput from "./NotesInput/NotesInput";
-import {v4 as uuid} from "uuid";
+import { useNotes } from "../../contexts";
 import "./notesSection.css";
 
 export const NotesSection = () => {
-  const [allNotes, setAllNotes] = useState(JSON.parse(localStorage.getItem("gKeepAllNotes")));
+  const { notes } = useNotes();
   const [fullContainerVisible, setFullContainerVisibility] = useState(false);
-  const addNewNote = (newNote) => {
-    setAllNotes([
-      ...allNotes,
-      {
-        id: uuid(),
-        title: newNote.title,
-        content: newNote.content,
-        bgColor: newNote.bgColor,
-        isPinned: newNote.isPinned,
-        tags: newNote.tags,
-        isTrashed: false,
-        trashedDate: null,
-      },
-    ]);
-  };
 
   useEffect(() => {
-    localStorage.setItem("gKeepAllNotes", JSON.stringify(allNotes))
-  }, [allNotes])
- 
-  
-  const updateFullContainerVisibility = (updatedState) =>{
-    setFullContainerVisibility(updatedState)
-  }
+    localStorage.setItem("gKeepAllNotes", JSON.stringify(notes));
+  }, [notes]);
 
-  const updateDisplayNote = (noteId, property, updatedValue) => {
-    let _allNotes = [...allNotes];
-    let note = _allNotes.find(item => item.id===noteId);
-    note[`${property}`] = updatedValue;
-    if(property==="isTrashed") note["isPinned"] = false;
-    setAllNotes(_allNotes);
-  }
+  const updateFullContainerVisibility = (updatedState) => {
+    setFullContainerVisibility(updatedState);
+  };
 
   return (
-    <div className="section-notes" >
-      <section className="section-input" >
-        <NotesInput addNewNote={(newNote) => addNewNote(newNote)} 
-        updateFullContainerVisibility={(updatedState)=>updateFullContainerVisibility(updatedState)}
-        fullContainerVisible={fullContainerVisible}
-        />
+    <div className="section-notes">
+      <section className="section-input">
+        <NotesInput fullContainerVisible={fullContainerVisible} updateFullContainerVisibility={updateFullContainerVisibility}/>
       </section>
-      <section className="section-display" onClick={() => updateFullContainerVisibility(false)}>
-        <NotesDisplay notes={allNotes} updateDisplayNote={(id, property, value)=>updateDisplayNote(id, property, value)}/>
+      <section
+        className="section-display"
+        onClick={() => updateFullContainerVisibility(false)}
+      >
+        <NotesDisplay />
       </section>
     </div>
   );

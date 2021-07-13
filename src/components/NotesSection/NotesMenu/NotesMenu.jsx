@@ -6,21 +6,34 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaTrashAlt, FaTrashRestoreAlt } from "react-icons/fa";
 
 import "./notesMenu.css";
+import { useNotes } from "../../../contexts";
 
 const NotesMenu = ({
   updateBgColor,
   bgColor,
   updateTagsList,
   tagsId,
+  noteId,
   showEditIcon,
   updateModalVisibility,
   isEditOpen,
-  deleteNote,
   inTrash,
-  deleteForever,
-  restoreNote,
   isNewNote,
 }) => {
+  const {dispatch} = useNotes();
+
+  const deleteForever = () => {
+    dispatch({type: "DELETE_NOTE_FOREVER", payload: {noteId}})
+  }
+
+  const restoreNote = () => {
+    dispatch({type: "RESTORE_NOTE", payload: {noteId}})
+  }
+
+  const deleteNote = () => {
+    dispatch({type: "ADD_NOTE_TO_TRASH", payload: {noteId}})
+  }
+
   return (
     <div className="container-notesMenu">
       {inTrash ? (
