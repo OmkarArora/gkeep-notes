@@ -12,19 +12,12 @@
   align-items: center;
 }
 
-/* .input-title.big {
-  height: auto;
+.section-modal {
+  width: 80%;
 }
 
-.input-content.big {
-  height: auto;
-} */
-
-.section-modal {
-  width: 50%;
-  /* height: auto;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%); */
+@media only screen and (min-width: 768px) {
+  .section-modal {
+    width: 50%;
+  }
 }

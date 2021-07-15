@@ -73,15 +73,16 @@
   font-weight: 600;
   font-size: 1rem;
   flex: 1;
-
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .display-content {
   font-size: 0.875rem;
   margin-top: 0.4rem;
   font-weight: 400;
+  overflow: hidden;
 }
 
 /* TODO: Detect if device is touch only, and remove visibilty animation for menu hover, below css is a bad alternative to that */
