@@ -20,8 +20,9 @@
 .main {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: var(--height-header) 0.5rem 0.5rem 0.5rem;
+  padding: var(--height-header) 1rem 0.5rem 1rem;
   background-color: var(--color-dark);
+  margin-bottom: calc(var(--height-header) + 2rem);
 }
 
 .container-footer {
@@ -48,6 +49,7 @@
 
   .main {
     margin-left: calc(var(--width-sidenav) + 1rem);
+    padding: var(--height-header) 1.5rem 0.5rem 0.5rem;
   }
 
   .container-footer {

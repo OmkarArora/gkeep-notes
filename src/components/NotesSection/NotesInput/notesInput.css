@@ -1,5 +1,5 @@
 .container-notesInput {
-  width: 45vw;
+  width: 70vw;
   border: 1px solid var(--color-light-gray);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -64,4 +64,10 @@
 
 .container-bottomMenu .icon-add:hover {
   color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-notesInput {
+    width: 45vw;
+  }
 }
