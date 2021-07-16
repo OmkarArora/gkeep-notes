@@ -1,1 +1,3 @@
-This is Google Keep Copy, made for practice.
+# G Keep
+
+Notes taking app
