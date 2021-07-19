@@ -3,8 +3,20 @@
   align-items: center;
   height: 100%;
 }
+.header a {
+  text-decoration: none;
+  color: white;
+}
 
 .header .header-title {
   font-size: 1.5rem;
   padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header .header-title img {
+  height: 1.8rem;
+  width: auto;
 }
