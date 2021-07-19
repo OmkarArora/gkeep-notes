@@ -7,6 +7,9 @@ export const notesReducer = (state, action) => {
       return { ...state, notes: action.payload.notes };
 
     case "ADD_NEW_NOTE":
+      if(action.payload.note.content === "" && action.payload.note.title === ""){
+        return state;
+      }
       return { ...state, notes: [...state.notes, action.payload.note] };
 
     case "ADD_NOTE_TO_TRASH":
