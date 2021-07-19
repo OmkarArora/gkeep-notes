@@ -28,12 +28,13 @@ const NotesEditModal = ({
   };
   
   const updateInput = (event, type) => {
+    const elementStyle = event.target.style;
     if (event.target.scrollHeight < 400) {
-      event.target.style.height = "inherit";
-      event.target.style.height = `${event.target.scrollHeight}px`;
-      event.target.style.overflow = "hidden";
+      elementStyle.height = "inherit";
+      elementStyle.height = `${event.target.scrollHeight}px`;
+      elementStyle.overflow = "hidden";
     } else {
-      event.target.style.overflowY = "scroll";
+      elementStyle.overflowY = "scroll";
     }
     updateDisplayNote(tagId, type, event.target.value);
   };
