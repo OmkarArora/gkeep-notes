@@ -5,7 +5,7 @@ import {
   RiDeleteBin7Line,
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import { useNav } from "../../contexts"
+import { useNav } from "../../contexts";
 import "./navbar.css";
 
 export const Navbar = () => {
@@ -14,7 +14,11 @@ export const Navbar = () => {
   return (
     <div className="navbar-mobile">
       <Link to="/">
-        <div className="btn-nav">
+        <div
+          className={
+            activeNavLink === "home" ? "btn-nav active-tab" : "btn-nav"
+          }
+        >
           <div className="icon icon-home">
             {activeNavLink === "home" ? <RiHome5Fill /> : <RiHome5Line />}
           </div>
@@ -23,7 +27,11 @@ export const Navbar = () => {
       </Link>
 
       <Link to="/trash">
-        <div className="btn-nav">
+        <div
+          className={
+            activeNavLink === "trash" ? "btn-nav active-tab" : "btn-nav"
+          }
+        >
           <div className="icon icon-home">
             {activeNavLink === "trash" ? (
               <RiDeleteBin7Fill />
