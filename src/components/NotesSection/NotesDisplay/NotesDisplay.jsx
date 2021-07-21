@@ -7,6 +7,8 @@ const NotesDisplay = ({ inTrash }) => {
   const { notes } = useNotes();
   let mappedNotes = notes;
 
+  console.log({notes});
+
   if (inTrash) {
     mappedNotes = notes.filter((note) => note.isTrashed);
   }
@@ -23,27 +25,14 @@ const NotesDisplay = ({ inTrash }) => {
         ? mappedNotes.map((item) => (
             <NotesCard
               key={`Note${item.id}`}
-              noteId={item.id}
-              tagId={item.id}
-              title={item.title}
-              content={item.content}
-              bgColor={item.bgColor}
-              tags={item.tags}
-              isPinned={item.isPinned}
               inTrash={inTrash}
+              {...item}
             />
           ))
         : otherNotes.map((item) => (
             <NotesCard
               key={`Note${item.id}`}
-              noteId={item.id}
-              tagId={item.id}
-              title={item.title}
-              content={item.content}
-              bgColor={item.bgColor}
-              tags={item.tags}
-              isPinned={item.isPinned}
-              inTrash={inTrash}
+              {...item}
             />
           ))}
     </div>
@@ -53,13 +42,7 @@ const NotesDisplay = ({ inTrash }) => {
         {pinnedNotes.map((item) => (
           <NotesCard
             key={`Note${item.id}`}
-            noteId={item.id}
-            tagId={item.id}
-            title={item.title}
-            content={item.content}
-            bgColor={item.bgColor}
-            tags={item.tags}
-            isPinned={item.isPinned}
+            {...item}
           />
         ))}
       </div>
@@ -67,13 +50,7 @@ const NotesDisplay = ({ inTrash }) => {
         {otherNotes.map((item) => (
           <NotesCard
             key={`Note${item.id}`}
-            noteId={item.id}
-            tagId={item.id}
-            title={item.title}
-            content={item.content}
-            bgColor={item.bgColor}
-            tags={item.tags}
-            isPinned={item.isPinned}
+            {...item}
           />
         ))}
       </div>

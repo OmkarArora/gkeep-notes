@@ -9,8 +9,7 @@ const maxTitleChars = 50;
 const maxContentChars = 200;
 
 const NotesCard = ({
-  noteId,
-  tagId,
+  id: noteId,
   title,
   content,
   bgColor,
@@ -29,21 +28,21 @@ const NotesCard = ({
   };
 
   const updateBgColor = (color) => {
-    updateDisplayNote(tagId, "bgColor", color);
+    updateDisplayNote(noteId, "bgColor", color);
   };
 
   const deleteNote = () => {
-    updateDisplayNote(tagId, "isTrashed", true);
+    updateDisplayNote(noteId, "isTrashed", true);
   };
 
   const updateTagsList = (newTag) => {
     let _tags = [...tags, newTag];
-    updateDisplayNote(tagId, "tags", _tags);
+    updateDisplayNote(noteId, "tags", _tags);
   };
 
   const deleteTag = (tag) => {
     let _tags = tags.filter((item) => item !== tag);
-    updateDisplayNote(tagId, "tags", _tags);
+    updateDisplayNote(noteId, "tags", _tags);
   };
 
   const updateModalVisibility = (newState) => {
@@ -71,7 +70,7 @@ const NotesCard = ({
           </div>
           <div
             className="container-pin"
-            onClick={() => updateDisplayNote(tagId, "isPinned", !isPinned)}
+            onClick={() => updateDisplayNote(noteId, "isPinned", !isPinned)}
           >
             {isPinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
           </div>
@@ -85,7 +84,7 @@ const NotesCard = ({
         <div>
           <TagsDisplay
             tags={tags}
-            tagsId={tagId}
+            tagsId={noteId}
             deleteTag={(tag) => deleteTag(tag)}
           />
 
@@ -108,7 +107,7 @@ const NotesCard = ({
       <NotesEditModal
         modalVisible={modalVisible}
         updateModalVisibility={(newState) => updateModalVisibility(newState)}
-        tagId={tagId}
+        tagId={noteId}
         noteId={noteId}
         title={title}
         content={content}
