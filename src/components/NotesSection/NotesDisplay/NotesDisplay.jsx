@@ -7,8 +7,6 @@ const NotesDisplay = ({ inTrash }) => {
   const { notes } = useNotes();
   let mappedNotes = notes;
 
-  console.log({notes});
-
   if (inTrash) {
     mappedNotes = notes.filter((note) => note.isTrashed);
   }
