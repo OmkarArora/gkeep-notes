@@ -1,0 +1,12 @@
+.section-notes {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-notes .section-input {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+}

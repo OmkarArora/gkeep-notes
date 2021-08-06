@@ -1,0 +1,20 @@
+.container-trash-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.container-trash-placeholder .icon-trash {
+  font-size: 10rem;
+  height: max-content;
+}
+
+.text-placeholder {
+  font-size: 1.3rem;
+}
+
+.trash-section {
+  margin-top: 2rem;
+}

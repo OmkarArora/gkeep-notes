@@ -1,0 +1,73 @@
+.container-notesInput {
+  width: 70vw;
+  border: 1px solid var(--color-light-gray);
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.input-title,
+.input-content {
+  background-color: inherit;
+  color: white;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  resize: none;
+}
+
+.input-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  resize: none;
+  flex: 1;
+}
+
+.input-content {
+  font-size: 1rem;
+  margin-top: 0.4rem;
+}
+
+.container-input-topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-input-topRow .container-pin {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.container-bottomMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.container-bottomMenu .icon-add {
+  cursor: pointer;
+  color: var(--color-placeholder);
+  background: none;
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.container-bottomMenu .icon-add:hover {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-notesInput {
+    width: 45vw;
+  }
+}

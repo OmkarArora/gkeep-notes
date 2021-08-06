@@ -1,0 +1,23 @@
+.container-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-modal {
+  width: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+  .section-modal {
+    width: 50%;
+  }
+}

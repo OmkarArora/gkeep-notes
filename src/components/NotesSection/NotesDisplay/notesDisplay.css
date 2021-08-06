@@ -1,0 +1,102 @@
+.container-notes {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1.5rem;
+}
+
+.section-pinned-notes,
+.section-other-notes {
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.section-pinned-notes::before {
+  content: "PINNED";
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  color: #9aa0a6;
+  font-weight: bold;
+}
+
+.section-other-notes::before {
+  content: "OTHERS";
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  color: #9aa0a6;
+  font-weight: bold;
+}
+
+/* Display Cards */
+
+.container-notes .notes-card {
+  border: 1px solid var(--color-light-gray);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 0.2rem 0.3rem 0.2rem 0.3rem;
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  position: relative;
+}
+
+.container-notes .notes-card:hover .container-display-bottomMenu {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.container-notes .notes-card .container-display-bottomMenu {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.container-display-topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-display-topRow .container-pin {
+  font-size: 1.3rem;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.display-title {
+  font-weight: 600;
+  font-size: 1rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.display-content {
+  font-size: 0.875rem;
+  margin-top: 0.4rem;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+/* TODO: Detect if device is touch only, and remove visibilty animation for menu hover, below css is a bad alternative to that */
+
+@media (max-width: 768px) {
+  .container-notes .notes-card .container-display-bottomMenu {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container-notes {
+    grid-auto-rows: minmax(150px, max-content);
+    grid-gap: 1rem;
+  }
+}
